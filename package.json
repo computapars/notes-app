@@ -1,0 +1,19 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "This notes app is part of the Node Developer Course on Udemy taught by Andrew Mead.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/computapars/notes-app.git"
+  },
+  "author": "Marlene Bowles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/computapars/notes-app/issues"
+  },
+  "homepage": "https://github.com/computapars/notes-app#readme"
+}
