@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/computapars/notes-app/issues"
   },
-  "homepage": "https://github.com/computapars/notes-app#readme"
+  "homepage": "https://github.com/computapars/notes-app#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "validator": "^10.8.0"
+  }
 }
