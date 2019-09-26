@@ -24,33 +24,35 @@ console.log(chalk.green.bold.inverse('Success'));
 /* Section 4 
 // Using arguments in command line
 */
-// const yargs = require('yargs');
 
-// yargs.version('1.0.2');
+const yargs = require('yargs');
+const notes = require('./notes.js');
+yargs.version('1.0.2');
 
 // /* Sets up Yarg commands */
-// yargs.command('add', 'Adds a note',
-//     {
-//         title : {
-//             desc: 'Note Title',
-//             type: 'string',
-//             demandOption: true,
-//         },
-//         body : {
-//             desc: 'Note body',
-//             type: 'string',
-//             demandOption: true,        
-//         }
-//     }, (argv) => {
-//         console.log('My title: ' + argv.title, 'My Body:' + argv.body)
-//     },
-// ).command('remove', 'Removes notes', () => {
-//     console.log('Removes a note')
-// }).command('list', 'Lists all notes', () => {
-//     console.log('listing a note')
-// }).command('read', 'Reads the notes', () => {
-//     console.log('Reading a note')
-// }).help().argv;
+const notesObj = {
+    title : {
+        desc: 'Note Title',
+        type: 'string',
+        demandOption: true,
+    },
+    body : {
+        desc: 'Note body',
+        type: 'string',
+        demandOption: true,        
+    }
+};
+
+yargs.command('add', 'Adds a note', notesObj, (argv) => {
+        notes.addNotes(argv.title, argv.body);
+    },
+).command('remove', 'Removes notes', notesObj, (argv) => {
+    notes.removeNote(argv.title);
+}).command('list', 'Lists all notes', () => {
+    console.log('listing a note')
+}).command('read', 'Reads the notes', () => {
+    console.log('Reading a note')
+}).help().argv;
 
 
 /* Section 4 
