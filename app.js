@@ -24,32 +24,48 @@ console.log(chalk.green.bold.inverse('Success'));
 /* Section 4 
 // Using arguments in command line
 */
-const yargs = require('yargs');
+// const yargs = require('yargs');
 
-yargs.version('1.0.2');
+// yargs.version('1.0.2');
 
-/* Sets up Yarg commands */
-yargs.command('add', 'Adds a note',
-    {
-        title : {
-            desc: 'Note Title',
-            type: 'string',
-            demandOption: true,
-        },
-        body : {
-            desc: 'Note body',
-            type: 'string',
-            demandOption: true,        
-        }
-    }, (argv) => {
-        console.log('My title: ' + argv.title, 'My Body:' + argv.body)
-    },
-).command('remove', 'Removes notes', () => {
-    console.log('Removes a note')
-}).command('list', 'Lists all notes', () => {
-    console.log('listing a note')
-}).command('read', 'Reads the notes', () => {
-    console.log('Reading a note')
-}).help().argv;
+// /* Sets up Yarg commands */
+// yargs.command('add', 'Adds a note',
+//     {
+//         title : {
+//             desc: 'Note Title',
+//             type: 'string',
+//             demandOption: true,
+//         },
+//         body : {
+//             desc: 'Note body',
+//             type: 'string',
+//             demandOption: true,        
+//         }
+//     }, (argv) => {
+//         console.log('My title: ' + argv.title, 'My Body:' + argv.body)
+//     },
+// ).command('remove', 'Removes notes', () => {
+//     console.log('Removes a note')
+// }).command('list', 'Lists all notes', () => {
+//     console.log('listing a note')
+// }).command('read', 'Reads the notes', () => {
+//     console.log('Reading a note')
+// }).help().argv;
 
 
+/* Section 4 
+// Working with JSON and the file system
+*/
+
+const fs = require('fs');
+
+const dataBuffer = fs.readFileSync('playground/1-json.json');
+const dataJSON = dataBuffer.toString();
+const data = JSON.parse(dataJSON);
+console.log(data)
+
+data.name = "Marlene";
+data.planet = "Virgo";
+data.age = "37";
+
+fs.writeFileSync('playground/1-json.json', JSON.stringify(data));
