@@ -1,20 +1,32 @@
-/* Section 2 */
-// const fsPromises = require('fs').promises;
+const yargs = require('yargs');
+const notes = require('./notes.js');
+yargs.version('1.0.2');
 
-// async function writeTheFile () {
-//     fsPromises.writeFile('Notes.txt', 'Initial comment on File');
-//     await fsPromises.appendFile('Notes.txt', '. This is a New comment on the file');
-// }
+/* Sets up Yarg commands */
+const notesObj = {
+    title : {
+        desc: 'Note Title',
+        type: 'string',
+        demandOption: true,
+    },
+    body : {
+        desc: 'Note body',
+        type: 'string',
+        demandOption: false,        
+    }
+};
 
-// writeTheFile();
-
-/* Section 3 */
-// Requiring modules and importing them;
-const getNotes = require('./notes.js');
-getNotes()
-
-// Using npm modules and using api's
-const chalk = require('chalk');
-console.log(chalk.green.bold.inverse('Success'));
-
-
+yargs.command('add', 'Adds a note',     {...notesObj, 
+    body: {
+        ...notesObj.body,
+        demandOption: true,
+    }}, (argv) => {
+        notes.add(argv.title, argv.body);
+    },
+).command('remove', 'Removes notes', notesObj, (argv) => {
+    notes.remove(argv.title);
+}).command('listNotes', 'Lists all notes', () => {
+    notes.listNotes();
+}).command('read', 'Reads the notes', notesObj, (argv) => {
+    notes.read(argv.title)
+}).help().argv;
