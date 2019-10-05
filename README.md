@@ -2,7 +2,7 @@
 This notes app is part of the Node Developer Course on Udemy taught by Andrew Mead.
 
 ## How it Works:
-Running the console and supplying commands, users have the following options.
+Running the console and supplying commands, users have the following options.  
 `$ node app.js add --title="Foo" --body="Bar Body"`  
 `$ node app.js remove --title="Foo"`  
 `$ node app.js read --title="Foo"`  
