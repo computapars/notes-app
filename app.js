@@ -2,7 +2,7 @@ const yargs = require('yargs');
 const notes = require('./notes.js');
 yargs.version('1.0.2');
 
-/* Sets up Yarg commands */
+/* Sets up Default Yarg Arguments */
 const notesObj = {
     title : {
         desc: 'Note Title',
@@ -16,7 +16,8 @@ const notesObj = {
     }
 };
 
-yargs.command('add', 'Adds a note',     {...notesObj, 
+/* API */
+yargs.command('add', 'Adds a note', {...notesObj, 
     body: {
         ...notesObj.body,
         demandOption: true,
@@ -25,7 +26,7 @@ yargs.command('add', 'Adds a note',     {...notesObj,
     },
 ).command('remove', 'Removes notes', notesObj, (argv) => {
     notes.remove(argv.title);
-}).command('listNotes', 'Lists all notes', () => {
+}).command('listNotes', 'Lists all note titles', () => {
     notes.listNotes();
 }).command('read', 'Reads the notes', notesObj, (argv) => {
     notes.read(argv.title)
